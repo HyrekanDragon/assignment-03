@@ -25,6 +25,8 @@ string int_to_roman(int n);
 
 string int_to_words(int n);
 
+string counter(int n);
+
 string magic_number(int n);
 
 #endif
