@@ -19,7 +19,7 @@
 using std::cout;
 using std::endl;
 using std::setw;
-using std::right;
+using std::left;
 
 
 int main()
@@ -36,7 +36,7 @@ int main()
 	cout << "The first 15 Fibonacci numbers are " << endl;
 	for (int i = 1; i <= 15; i++)
 	{
-		cout << setw(2) << right << fib(i) << " ";
+		cout << setw(2) << left << fib(i) << " ";
 	}
 	cout << endl << endl;
 
@@ -46,7 +46,7 @@ int main()
 	cout << "The first 10 triangle numbers are " << endl;
 	for (int j = 1; j <= 10; j++)
 	{
-		cout << setw(2) << right << tri(j) << " ";
+		cout << setw(2) << left << tri(j) << " ";
 	}
 
 	cout << endl << endl;
@@ -55,27 +55,63 @@ int main()
 	cout << "The first 100 Roman Numerals are " << endl;
 	for (int k = 1; k <= 100; k++)
 	{
-		cout << int_to_roman(k) << " ";
+		cout << setw(8) << left << int_to_roman(k) << " ";
 		counter++;
 
-		if (counter == 20)
+		if (counter == 5)
 		{
 			cout << endl;
 			counter = 0;
 		}
 	}
-	cout << endl << endl;
+	cout << endl 
+		<< "3999 in Roman Numerals is " 
+		<< int_to_roman(3999) 
+		<< endl << endl;
 	
 	cout << "Converting numbers into words\n";
-	for (int k = -5; k < 5; k++)
+	for (int k = -10; k < 20; k++)
 	{
 		cout << int_to_words(k) << endl;
 	}
-	cout << endl;
-	for (int l = 100000000; l < 1000000000; l += 100000000)
+	for (int l = 20; l < 100; l += 10)
 	{
 		cout << int_to_words(l) << endl;
 	}
+	for (int m = 100; m < 110; m++)
+	{
+		cout << int_to_words(m) << endl;
+	}
+	for (int n = 200; n < 1000; n += 100)
+	{
+		cout << int_to_words(n) << endl;
+	}
+	for (int o = 1000; o < 10000; o += 1000)
+	{
+		cout << int_to_words(o) << endl;
+	}
+	for (int o = 10000; o < 100000; o += 10000)
+	{
+		cout << int_to_words(o) << endl;
+	}
+	for (int o = 100000; o < 1000000; o += 100000)
+	{
+		cout << int_to_words(o) << endl;
+	}
+	for (int o = 1000000; o < 10000000; o += 1000000)
+	{
+		cout << int_to_words(o) << endl;
+	}
+	for (int o = 10000000; o < 100000000; o += 10000000)
+	{
+		cout << int_to_words(o) << endl;
+	}
+	for (int o = 100000000; o < 1000000000; o += 100000000)
+	{
+		cout << int_to_words(o) << endl;
+	}
+	cout << int_to_words( 999999999 ) << endl;
+
 	cout << endl;
 
 	cout << magic_number(13) << endl << endl;
@@ -92,7 +128,7 @@ int main()
 	cout << "The first 15 Fibonacci numbers are " << endl;
 	for (int i = 1; i <= 15; i++)
 	{
-		cout << setw(2) << right << fib_iter(i) << " ";
+		cout << setw(2) << left << fib_iter(i) << " ";
 	}
 	cout << endl << endl;
 
@@ -102,7 +138,7 @@ int main()
 	cout << "The first 10 triangle numbers are " << endl;
 	for (int j = 1; j <= 10; j++)
 	{
-		cout << setw(2) << right << tri_iter(j) << " ";
+		cout << setw(2) << left << tri_iter(j) << " ";
 	}
 
 	cout << endl << endl;
