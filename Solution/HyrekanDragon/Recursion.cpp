@@ -123,21 +123,64 @@ string int_to_words(int n)
 	//Recursion
 	for (int i = 30; i >= 0; i--)
 	{
+		if (n == 0)
+		{
+			return " ";
+		}
+
 		if (n >= number[i])
 		{
-			if (number[i] >= 100)
+			if (number[i] < 100)
+			{
+				return word[i] + int_to_words(n - number[i]);
+			}
+			else if (number[i] >= 100)
 			{
 				while (n >= number[i])
 				{
 					n -= number[i];
 					c++;
 				}
-				return int_to_words(c) + word[i];
+				cout << counter(c) + word[i];
+				if (n == 0)
+				{
+					return " ";
+				}
+				return int_to_words(n);
 			}
-			n -= number[i];
-			return word[i] + int_to_words(n);
 		}
 	}	
+}
+
+string counter(int n)
+{
+	int number[36] = { 1,2,3,4,5,6,7,8,9,10,
+						11,12,13,14,15,16,17,18,19,
+						20,30,40,50,60,70,80,90,
+						100, 200, 300, 400 , 500, 600, 700,
+						800, 900 };
+	string word[36] = {"one ","two ","three ","four ","five ",
+						"six ","seven ","eight ","nine ","ten ","eleven ",
+						"twelve ","thirteen ","fourteen ","fifteen ","sixteen ",
+						"seventeen ","eighteen ","nineteen ","twenty ","thirty ",
+						"forty ","fifty ","sixty ","seventy ","eighty ","ninety ",
+						"one hundred ", "two hundred ","three hundred ","four hundred ",
+						"five hundred ", "six hundred ", "seven hundred ", "eight hundred ",
+						"nine hundred "};
+
+	//Base Case
+	for (int i = 35; i >= 0; i--)
+	{
+		if (n == number[i]) return word[i];
+	}
+	//Recursive Case
+	for (int i = 35; i >= 0; i--)
+	{
+		if (n >= number[i])
+		{
+			return word[i] + counter(n - number[i]);
+		}
+	}
 }
 
 string magic_number(int n)
