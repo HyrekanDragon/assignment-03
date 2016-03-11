@@ -5,6 +5,7 @@
 
 /**
 * Function prototypes for rewriting recursion functions into iteration functions.
+* To see definition of functions see Recursion.h.
 */
 
 #ifndef	ITERATION_H
