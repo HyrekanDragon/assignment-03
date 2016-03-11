@@ -26,7 +26,7 @@ int gcd_iter(int a, int b)
 	if (a == 0 && b == 0) throw 'a';
 
 	//Iteration
-	while (a != 0 && b != 0)
+	while (a != 0 && b != 0) //if a or b is 0 move on
 	{
 		if (a > b) a -= b;
 		else	   b -= a;
@@ -58,18 +58,14 @@ int fib_iter(int n)
 
 int pow_iter(int a, int b)
 {
-	int pow = a;
+	int pow = 1;
 
 	//Exception
 	if (b < 0) throw 'c';
 	if (a == 0 && b == 0) throw 'c';
-
-	//Special Case
-	if (b == 0) return 1;
-	if (b == 1) return a;
 	
 	//Iteration
-	for (int i = 2; i <= b ; i++)
+	for (int i = 0; i < b ; i++)
 	{
 		pow *= a;
 	}
