@@ -20,10 +20,11 @@ public:
 	{
 		number = newNumber;
 	}
-	D getNumber() const
-	{
-		return number;
-	}
+	//Didn't use this function for some reason
+	//D getNumber() const
+	//{
+	//	return number;
+	//}
 	void speak() const
 	{
 		cout << "This dragon is holding the number "
