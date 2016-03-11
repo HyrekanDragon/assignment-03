@@ -123,7 +123,7 @@ string int_to_words(int n)
 	//Recursion
 	for (int i = 30; i >= 0; i--)
 	{
-		if (n == 0)
+		if (n == 0) //Don't print "zero" if number passed isn't zero
 		{
 			return " ";
 		}
@@ -134,19 +134,29 @@ string int_to_words(int n)
 			{
 				return word[i] + int_to_words(n - number[i]);
 			}
-			else if (number[i] >= 100)
+
+/*Hundred are counted as one hundred, two hundred...
+and every three tens places after a hundred are counted as
+one____, two_____..... ten_____ eleven____....
+one hundred______, two hundred______..... nine hundred____
+in English. This part counts how many hundreds, thousands,
+millions etc) there are and returns the counter in words
+*/
+
+			else if (number[i] >= 100) 
 			{
 				while (n >= number[i])
 				{
 					n -= number[i];
 					c++;
 				}
-				cout << counter(c) + word[i];
+
+//Reason in a previous comment
 				if (n == 0)
 				{
-					return " ";
+					return counter(c) + word[i] + " ";
 				}
-				return int_to_words(n);
+				return counter(c) + word[i] + int_to_words(n);
 			}
 		}
 	}	
@@ -189,11 +199,104 @@ string magic_number(int n)
 	if (n < 0) throw 'g';
 
 	//Base Case
-	if (n == 4)
-		return "4 is the magic number!";
+	if (n == magic_to_words(n).length())
+		return magic_to_words(n) + " is the magic number!";
 
 	//Recursion 
-	int a = int_to_words(n).length() - 1;
+	int a = magic_to_words(n).length();
 	cout << n << " is " << a << endl;
 	return magic_number(a);
+}
+
+/*The functions below are the same as int_to_words
+and counter except it does not print spaces between words.
+This is so magic_number does not count spaces and just counts
+the number of characters.
+*/
+
+string magic_to_words(int n)
+{
+	int c = 0;
+	int number[31] = { 0,1,2,3,4,5,6,7,8,9,10,
+		11,12,13,14,15,16,17,18,19,
+		20,30,40,50,60,70,80,90,
+		100,1000,1000000 };
+	string word[31] = { "zero","one","two","three","four","five",
+		"six","seven","eight","nine","ten","eleven",
+		"twelve","thirteen","fourteen","fifteen","sixteen",
+		"seventeen","eighteen","nineteen","twenty","thirty",
+		"forty","fifty","sixty","seventy","eighty","ninety",
+		"hundred","thousand","million" };
+	//Exception
+	if (n > 1000000000 || n < -1000000000) throw 'f';
+
+	//Normalize
+	if (n < 0) return "negative " + magic_to_words(-n);
+
+	//Base Case
+	for (int i = 27; i >= 0; i--)
+	{
+		if (n == number[i]) return word[i];
+	}
+
+	//Recursion
+	for (int i = 30; i >= 0; i--)
+	{
+		if (n == 0)
+		{
+			return " ";
+		}
+
+		if (n >= number[i])
+		{
+			if (number[i] < 100)
+			{
+				return word[i] + magic_to_words(n - number[i]);
+			}
+			else if (number[i] >= 100)
+			{
+				while (n >= number[i])
+				{
+					n -= number[i];
+					c++;
+				}
+				if (n == 0)
+				{
+					return magic_counter(c) + word[i] + " ";
+				}
+				return magic_counter(c) + word[i] + magic_to_words(n);
+			}
+		}
+	}
+}
+
+string magic_counter(int n)
+{
+	int number[36] = { 1,2,3,4,5,6,7,8,9,10,
+		11,12,13,14,15,16,17,18,19,
+		20,30,40,50,60,70,80,90,
+		100, 200, 300, 400 , 500, 600, 700,
+		800, 900 };
+	string word[36] = { "one","two","three","four","five",
+		"six","seven","eight","nine","ten","eleven",
+		"twelve","thirteen","fourteen","fifteen","sixteen",
+		"seventeen","eighteen","nineteen","twenty","thirty",
+		"forty","fifty","sixty","seventy","eighty","ninety",
+		"onehundred", "twohundred","threehundred","fourhundred",
+		"fivehundred", "sixhundred", "sevenhundred", "eighthundred",
+		"ninehundred" };
+
+	//Base Case
+	for (int i = 35; i >= 0; i--)
+	{
+		if (n == number[i]) return word[i];
+	}
+	//Recursive Case
+	for (int i = 35; i >= 0; i--)
+	{
+		if (n >= number[i])
+		{
+			return word[i] + magic_counter(n - number[i]);
+		}
+	}
 }
