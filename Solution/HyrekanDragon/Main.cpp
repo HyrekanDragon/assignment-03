@@ -116,6 +116,8 @@ int main()
 
 	cout << magic_number(13) << endl << endl;
 	cout << magic_number(20) << endl << endl;
+	cout << magic_number(777777777) << endl << endl;
+	cout << magic_number(999999999) << endl << endl;
 
 	cout << "Done testing Recursion Functions\n\n";
 
