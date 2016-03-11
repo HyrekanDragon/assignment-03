@@ -53,6 +53,7 @@ void test_exceptions()
 	{
 		int a = 100, b = 100;
 		cout << "Testing swap function!\n";
+		//This an arbitrary test. catch(...) shouldn't be used normally
 		swap(a, b);
 	}
 
@@ -92,6 +93,9 @@ void test_templates()
 	swap(pi, tau);
 	swap(q, r);
 	swap(s1, s2);
+
+	//Theres probably a better way to do this using loops
+
 	swap(arr_1[1], arr_2[0]);
 	swap(arr_2[1], arr_1[0]);
 	
@@ -123,17 +127,17 @@ void test_stl()
 
 	vector<int> k = { 1, 3 , 8 };
 	k.clear();
-	k.push_back(1);
+	k.push_back(1); //push_back adds to the end of a vector
 	k.push_back(2);
 	k.push_back(4);
-	k.pop_back();
+	k.pop_back();  //pop_back removes the last space reserved in memory for the vector
 	k.push_back(3);
 	cout << "The capacity is " << k.capacity() << ".\n";
-	k.reserve(5);
+	k.reserve(5); //Reserves nth amount of spaces in memory
 	cout << "The capacity is now " << k.capacity() << ".\n";
 	k.push_back(4);
 
-	for (int e : k)
+	for (int e : k) //For every e in vector k
 	{
 		cout << e << endl;
 	}
@@ -180,6 +184,8 @@ void test_stl()
 	}
 
 	cout << endl << "Testing Maps!\n\n";
+
+	//Most of the functions in Maps are similar to vectors or sets
 
 	map<double, string > m = { {1,"ichi"},{2,"ni"},{3,"san"},{4,"yon"},{5,"go"},
 							   {6,"roku"},{7,"shichi"},{8,"hachi"},{9,"kyuu"},
